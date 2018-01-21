@@ -5,7 +5,7 @@ const webpack = require("webpack");
 const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const autoprefixer = require('autoprefixer');
+const autoprefixer = require("autoprefixer");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const rimraf = require("rimraf");
@@ -102,7 +102,7 @@ if ("production" === NODE_ENV) {
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
-        pure_funcs: ["console.log", "window.console.log.apply"]
+        pure_funcs: ["console.log", "window.console.log.apply"],
       },
       output: {
         comments: false,
