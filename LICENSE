@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2018 Anatol Merezhanyi
+Copyright (c) 2018 Anatol Merezhanyi https://github.com/e1r0nd/rainy-mood
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,17 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Acknowledgements:
+
+- Some original Bootstrap code and documentation http://getbootstrap.com
+`Copyright (c) 2011-2015, Twitter Inc.`
+
+- Side Nav code https://github.com/GoogleChrome/ui-element-samples
+`Copyright (c) 2015 Google, Inc.`
+
+- Background Splash https://codepen.io/Nvagelis/pen/yaQGAL
+`Copyright (c) 2016 Nvagelis`
+
+-Background Image https://stocksnap.io/photo/2KWC7GFQLV
+`Copyright (c) 2018 Antonio`
