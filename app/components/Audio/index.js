@@ -1,8 +1,15 @@
-// import BufferLoader from "./buffer-loader";
-import rainSoft from "./rain-soft.mp3";
-
 const Audio = {
-  loadFile(url, callback) {
+  init() {
+    this.sounds = {};
+    this.context = null;
+    this.bufferLoader = null;
+    this.bufferList = [];
+
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    this.context = new AudioContext();
+  },
+
+  loadFile(url, title, callback) {
     const request = new XMLHttpRequest();
     request.open("GET", url, true);
     request.responseType = "arraybuffer";
@@ -17,14 +24,14 @@ const Audio = {
 
             return;
           }
-          this.bufferList.push(buffer);
+          this.bufferList[title] = buffer;
           callback.call(this, this.bufferList);
         },
         error => {
           console.error(`decodeAudioData error: ${error}`);
         }
       );
-    },
+    };
 
     request.onerror = () => {
       console.log("BufferLoader: XHR error");
@@ -33,86 +40,16 @@ const Audio = {
     request.send();
   },
 
-  createAudio() {
-    this.music.rainSoft = this.context.createBufferSource();
-    this.music.gainNodeRainSoft = this.context.createGain();
-    this.music.rainSoft.buffer = this.bufferList[0];
-    this.music.rainSoft.loop = true;
-    this.music.gainNodeRainSoft.gain.setValueAtTime(0.01, this.context.currentTime);
-    this.music.rainSoft.connect(this.music.gainNodeRainSoft);
-    this.music.gainNodeRainSoft.connect(this.context.destination);
-    this.music.gainNodeRainSoft.gain.exponentialRampToValueAtTime(1.0, this.context.currentTime + 3.0);
-
-    // music.game = context.createBufferSource();
-    // music.gainNodeGame = context.createGain();
-    // music.game.buffer = bufferList[0];
-    // music.game.connect(music.gainNodeGame);
-    // music.gainNodeGame.connect(context.destination);
-    // music.gainNodeGame.gain.exponentialRampToValueAtTime(1.0, context.currentTime + 3.0);
-  },
-
-  finishedLoading(bufferedList) {
-    this.bufferList = bufferedList;
-    this.createAudio();
-    this.music.rainSoft.start();
-  },
-
-  init() {
-    this.music = {
-      "rainSoft": null,
-      "gainNodeRainSoft": null,
-      "rainHeavy": null,
-      "gainNodeRainHeavy": null,
-    };
-    this.sounds = {
-      "clickSound": 2,
-      "gameOver": 3,
-      "selectChip": 4,
-      "deselectChip": 5,
-    };
-    this.context = null;
-    this.bufferLoader = null;
-    this.bufferList = [];
-
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    this.context = new AudioContext();
-
-    this.loadFile(rainSoft, this.finishedLoading);
-
-    // const sound = new Uint8Array(rainSoft);
-    // this.context.decodeAudioData(sound.buffer).then(decodedData => {
-    //   this.music.rainSoft = this.context.createBufferSource();
-    //   this.music.gainNodeRainSoft = this.context.createGain();
-    //   this.music.rainSoft.buffer = decodedData;
-    //   this.music.rainSoft.loop = true;
-    //   this.music.gainNodeRainSoft.gain.setValueAtTime(0.01, this.context.currentTime);
-    //   this.music.rainSoft.connect(this.music.gainNodeRainSoft);
-    //   this.music.gainNodeRainSoft.connect(this.context.destination);
-    //   this.music.gainNodeRainSoft.gain.exponentialRampToValueAtTime(1.0, this.context.currentTime + 3.0);
-
-    //   this.music.rainSoft.start();
-    // });
-
-    // this.bufferLoader = new BufferLoader(
-    //       this.context,
-    //   [
-    //     rainSoft,
-    //     // "../components/Rain/rain-soft.mp3",
-    //     // "../components/Sky/thunder-close-long.mp3",
-    //     // "planetjazzbass-the-death-of-gagarin.ogg",
-    //     // "finger-snap.ogg",
-    //     // "failure-sound-effect.ogg",
-    //     // "button-sound.ogg",
-    //     // "button-sound-effect.ogg",
-    //   ],
-    //       this.finishedLoading
-    //   );
-
-    // this.bufferLoader.load();
-  },
-
-  capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+  createAudioInfinite(title, isPlaying) {
+    this.sounds[title] = this.context.createBufferSource();
+    this.sounds[`${title}GainNode`] = this.context.createGain();
+    this.sounds[title].buffer = this.bufferList[title];
+    this.sounds[title].loop = true;
+    this.sounds[`${title}GainNode`].gain.setValueAtTime(0.01, this.context.currentTime);
+    this.sounds[title].connect(this.sounds[`${title}GainNode`]);
+    this.sounds[`${title}GainNode`].connect(this.context.destination);
+    this.sounds[`${title}GainNode`].gain.exponentialRampToValueAtTime(1.0, this.context.currentTime + 3.0);
+    isPlaying && this.sounds[title].start();
   },
 
   playSound(sound) {
