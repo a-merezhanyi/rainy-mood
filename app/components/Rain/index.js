@@ -15,3 +15,7 @@ const finishedLoading1 = () => {
 
 Audio.loadFile(rainSoft, "rainSoft", finishedLoading);
 Audio.loadFile(rainHeavy, "rainHeavy", finishedLoading1);
+
+setTimeout(() => {
+  Audio.setSoundVolume("rainHeavy", 1);
+}, 5000);

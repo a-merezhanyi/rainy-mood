@@ -15,6 +15,7 @@ const Audio = {
     request.responseType = "arraybuffer";
 
     request.onload = () => {
+      console.log(request.response);
       // Asynchronously decode the audio file data in request.response
       this.context.decodeAudioData(
         request.response,
@@ -25,7 +26,8 @@ const Audio = {
             return;
           }
           this.bufferList[title] = buffer;
-          callback.call(this, this.bufferList);
+          console.log(this.bufferList);
+          callback.call(this);
         },
         error => {
           console.error(`decodeAudioData error: ${error}`);
@@ -41,6 +43,7 @@ const Audio = {
   },
 
   createAudioInfinite(title, isPlaying) {
+    console.log(title, this.bufferList);
     this.sounds[title] = this.context.createBufferSource();
     this.sounds[`${title}GainNode`] = this.context.createGain();
     this.sounds[title].buffer = this.bufferList[title];
@@ -50,6 +53,11 @@ const Audio = {
     this.sounds[`${title}GainNode`].connect(this.context.destination);
     this.sounds[`${title}GainNode`].gain.exponentialRampToValueAtTime(1.0, this.context.currentTime + 3.0);
     isPlaying && this.sounds[title].start();
+  },
+
+  setSoundVolume(title, x) {
+    this.sounds[`${title}GainNode`].gain.setValueAtTime(x, this.context.currentTime);
+    this.sounds[title].start();
   },
 
   playSound(sound) {
