@@ -86,7 +86,7 @@ module.exports = {
         }),
       },
       {
-        test: /\.(ico|png|jpg|svg|ttf|eot|woff|woff2)$/,
+        test: /\.(ico|png|jpg|svg|ttf|eot|woff|woff2|mp3)$/,
         // use: addHash("file?name=[path][name].[ext]", "hash:6"),
         use: addHash("file-loader?name=[name].[ext]", "hash:6"),
       },

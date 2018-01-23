@@ -66,6 +66,9 @@ Navigation.init();
 
 // Settings.init();
 
+import Audio from "./components/Audio";
+Audio.init();
+
 import Sky from "./components/Sky";
 
 import Rain from "./components/Rain";
