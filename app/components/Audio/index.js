@@ -7,6 +7,9 @@ const Audio = {
 
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
     this.context = new AudioContext();
+
+    this.sounds.mainGainNode = this.context.createGain();
+    this.sounds.mainGainNode.connect(this.context.destination);
   },
 
   loadFile(url, title, callback) {
@@ -15,7 +18,6 @@ const Audio = {
     request.responseType = "arraybuffer";
 
     request.onload = () => {
-      console.log(request.response);
       // Asynchronously decode the audio file data in request.response
       this.context.decodeAudioData(
         request.response,
@@ -26,7 +28,6 @@ const Audio = {
             return;
           }
           this.bufferList[title] = buffer;
-          console.log(this.bufferList);
           callback.call(this);
         },
         error => {
@@ -43,21 +44,22 @@ const Audio = {
   },
 
   createAudioInfinite(title, isPlaying) {
-    console.log(title, this.bufferList);
     this.sounds[title] = this.context.createBufferSource();
     this.sounds[`${title}GainNode`] = this.context.createGain();
     this.sounds[title].buffer = this.bufferList[title];
     this.sounds[title].loop = true;
     this.sounds[`${title}GainNode`].gain.setValueAtTime(0.01, this.context.currentTime);
     this.sounds[title].connect(this.sounds[`${title}GainNode`]);
-    this.sounds[`${title}GainNode`].connect(this.context.destination);
-    this.sounds[`${title}GainNode`].gain.exponentialRampToValueAtTime(1.0, this.context.currentTime + 3.0);
-    isPlaying && this.sounds[title].start();
+    // this.sounds[`${title}GainNode`].connect(this.context.destination);
+    this.sounds[`${title}GainNode`].connect(this.sounds.mainGainNode);
+    this.sounds[title].start();
+
+    isPlaying && this.sounds[`${title}GainNode`].gain.exponentialRampToValueAtTime(1.0, this.context.currentTime + 3.0);
+
   },
 
   setSoundVolume(title, x) {
     this.sounds[`${title}GainNode`].gain.setValueAtTime(x, this.context.currentTime);
-    this.sounds[title].start();
   },
 
   playSound(sound) {
@@ -66,6 +68,10 @@ const Audio = {
     source.connect(this.context.destination);
     source.start();
   },
+
+  muteSound(isMuted) {
+    this.sounds.mainGainNode.gain.setValueAtTime(isMuted ? 0 : 1, this.context.currentTime);
+  }
 
   // window.onload = init;
 

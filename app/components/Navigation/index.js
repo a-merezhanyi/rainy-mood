@@ -3,8 +3,8 @@ import "./Navigation.scss";
 
 import Detabinator from "./detabinator";
 // import locale from "../../actions/Locale";
-
 // import badge from "../Badge";
+import Audio from "../Audio";
 
 const Navigation = {
   init() {
@@ -20,6 +20,8 @@ const Navigation = {
     this.hideButtonEl = document.querySelector("#menuHide");
     this.sideNavEl = document.querySelector("#sideNav");
     this.sideNavContainerEl = document.querySelector("#sideNavContainer");
+
+    this.muteSound = document.querySelector("#muteSound");
     // Control whether the container"s children can be focused
     // Set initial state to inert since the drawer is offscreen
     this.detabinator = new Detabinator(this.sideNavContainerEl);
@@ -41,60 +43,47 @@ const Navigation = {
     this.supportsPassive = null;
     this.addEventListeners();
 
-    if ("onhashchange" in window) {
-      window.onhashchange = this.hashbreak;
-      this.hashbreak();
-    } else {
-      this.hashguard(false);
-    }
+    // if ("onhashchange" in window) {
+    //   window.onhashchange = this.hashbreak;
+    //   this.hashbreak();
+    // } else {
+    //   this.hashguard(false);
+    // }
   },
 
   createBlock() {
-    // const badgeLearnWordsTopNum = badge({
-    //   "id": "learnWordsTopNum",
-    //   "label": "",
-    //   "class": "",
-    // });
-    // const badgeRepeatWordsTopNum = badge({
-    //   "id": "repeatWordsTopNum",
-    //   "label": "",
-    //   "class": "",
-    // });
-
     const html = document.createElement("div");
     html.classList.add("navigation");
     html.innerHTML = navigationTmp;
-    //   .replace(/{{badgeLearnWordsTopNum}}/g, badgeLearnWordsTopNum)
-    //   .replace(/{{badgeRepeatWordsTopNum}}/g, badgeRepeatWordsTopNum);
 
     return html;
   },
 
-  hashguard(init) { // onHashChange
-    if (init) {
-      this.hash = window.location.hash;
-    }
-    if (this.hash !== window.location.hash) {
-      this.hashbreak();
-      this.hash = window.location.hash;
-    }
-    setTimeout(this.hashguard.bind(this), 300);
-  },
+  // hashguard(init) { // onHashChange
+  //   if (init) {
+  //     this.hash = window.location.hash;
+  //   }
+  //   if (this.hash !== window.location.hash) {
+  //     this.hashbreak();
+  //     this.hash = window.location.hash;
+  //   }
+  //   setTimeout(this.hashguard.bind(this), 300);
+  // },
 
-  hashbreak() { // hashchange event
-    let node = null;
-    try {
-      node = document.querySelector(`[data-target=${window.location.hash.slice(3)}]`);
-    } catch (e) {
-      console.log(`WOAH! ${e.name}:${e.message}`);
-    }
+  // hashbreak() { // hashchange event
+  //   let node = null;
+  //   try {
+  //     node = document.querySelector(`[data-target=${window.location.hash.slice(3)}]`);
+  //   } catch (e) {
+  //     console.log(`WOAH! ${e.name}:${e.message}`);
+  //   }
 
-    if (node) {
-      node.click();
-    } else {
-      document.querySelector("[data-target=summary]").click();
-    }
-  },
+  //   if (node) {
+  //     node.click();
+  //   } else {
+  //     document.querySelector("[data-target=summary]").click();
+  //   }
+  // },
 
   navSelect() {
     // Hide previous tab
@@ -115,7 +104,20 @@ const Navigation = {
     // Change Title and hide Nav
     // this.navTitle.dataset.lang = this.selected;
     // this.navTitle.innerHTML = locale.getWord(this.selected);
+
     this.hideSideNav();
+  },
+
+  muteSounds() {
+    if ("false" === this.dataset.muted) {
+      this.dataset.muted = "true";
+      this.innerText = "Unmute";
+      Audio.muteSound(true);
+    } else {
+      this.dataset.muted = "false";
+      this.innerText = "Mute";
+      Audio.muteSound();
+    }
   },
 
   // apply passive event listening if it"s supported
@@ -137,6 +139,8 @@ const Navigation = {
   },
 
   addEventListeners() {
+    this.muteSound.addEventListener("click", this.muteSounds);
+
     this.showButtonEl.addEventListener("click", this.showSideNav);
     this.hideButtonEl.addEventListener("click", this.hideSideNav);
     this.sideNavEl.addEventListener("click", this.hideSideNav);
