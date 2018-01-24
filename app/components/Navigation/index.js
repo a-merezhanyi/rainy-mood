@@ -40,13 +40,6 @@ const Navigation = {
 
     this.supportsPassive = null;
     this.addEventListeners();
-
-    // if ("onhashchange" in window) {
-    //   window.onhashchange = this.hashbreak;
-    //   this.hashbreak();
-    // } else {
-    //   this.hashguard(false);
-    // }
   },
 
   createBlock() {
@@ -57,52 +50,7 @@ const Navigation = {
     return html;
   },
 
-  // hashguard(init) { // onHashChange
-  //   if (init) {
-  //     this.hash = window.location.hash;
-  //   }
-  //   if (this.hash !== window.location.hash) {
-  //     this.hashbreak();
-  //     this.hash = window.location.hash;
-  //   }
-  //   setTimeout(this.hashguard.bind(this), 300);
-  // },
-
-  // hashbreak() { // hashchange event
-  //   let node = null;
-  //   try {
-  //     node = document.querySelector(`[data-target=${window.location.hash.slice(3)}]`);
-  //   } catch (e) {
-  //     console.log(`WOAH! ${e.name}:${e.message}`);
-  //   }
-
-  //   if (node) {
-  //     node.click();
-  //   } else {
-  //     document.querySelector("[data-target=summary]").click();
-  //   }
-  // },
-
   navSelect() {
-    // Hide previous tab
-    // document
-    //   .querySelector(`#${this.selected}Nav`)
-    //   .classList.remove("active");
-    // document
-    //   .querySelector(`#${this.selected}`)
-    //   .classList.add("u--nodisplay");
-    // Store current Tab and show it
-    // this.selected = e.currentTarget.dataset.target;
-    // document
-    //   .querySelector(`#${this.selected}Nav`)
-    //   .classList.add("active");
-    // document
-    //   .querySelector(`#${this.selected}`)
-    //   .classList.remove("u--nodisplay");
-    // Change Title and hide Nav
-    // this.navTitle.dataset.lang = this.selected;
-    // this.navTitle.innerHTML = locale.getWord(this.selected);
-
     this.hideSideNav();
   },
 
