@@ -4,6 +4,7 @@ import rainSoft from "./rain-soft.mp3";
 import rainHeavy from "./rain-heavy.mp3";
 
 import Audio from "../Audio";
+import Navigation from "../Navigation";
 
 const Rain = {
   // handle interaction
@@ -12,8 +13,6 @@ const Rain = {
   },
 
   touchHandler(e) {
-    // e.preventDefault();
-    // const touch = e.touches[0];
     this.updateVolume(e.touches[0].clientX, e.touches[0].clientY);
   },
 
@@ -48,8 +47,8 @@ const Rain = {
     });
 
     document.addEventListener("mousemove", this.mouseHandler.bind(this));
-    document.addEventListener("touchstart", this.touchHandler.bind(this));
-    document.addEventListener("touchmove", this.touchHandler.bind(this));
+    document.addEventListener("touchstart", this.touchHandler.bind(this), Navigation.applyPassive());
+    document.addEventListener("touchmove", this.touchHandler.bind(this), Navigation.applyPassive());
     window.addEventListener("resize", this.resize.bind(this));
   },
 };

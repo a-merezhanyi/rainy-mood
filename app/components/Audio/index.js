@@ -57,8 +57,12 @@ const Audio = {
 
   },
 
-  setSoundVolume(title, x) {
-    this.sounds[`${title}GainNode`].gain.setValueAtTime(x, this.context.currentTime);
+  setSoundVolume(title, volume) {
+    this.sounds[`${title}GainNode`].gain.setValueAtTime(volume, this.context.currentTime);
+  },
+
+  expChangeVolume(title = "main", volume = 1, delay = 3) {
+    this.sounds[`${title}GainNode`].gain.exponentialRampToValueAtTime(volume, this.context.currentTime + delay);
   },
 
   playSound(title) {

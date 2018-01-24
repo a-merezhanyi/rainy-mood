@@ -2,8 +2,6 @@ import navigationTmp from "./Navigation.html";
 import "./Navigation.scss";
 
 import Detabinator from "./detabinator";
-// import locale from "../../actions/Locale";
-// import badge from "../Badge";
 import Audio from "../Audio";
 
 const Navigation = {
@@ -209,6 +207,7 @@ const Navigation = {
   },
 
   showSideNav() {
+    Audio.expChangeVolume("main", 0.5, 0.33);
     this.sideNavEl.classList.add("side-nav--animatable");
     this.sideNavEl.classList.add("side-nav--visible");
     this.detabinator.inert = false;
@@ -216,6 +215,7 @@ const Navigation = {
   },
 
   hideSideNav() {
+    Audio.expChangeVolume("main", 1, 0.13);
     this.sideNavEl.classList.add("side-nav--animatable");
     this.sideNavEl.classList.remove("side-nav--visible");
     this.detabinator.inert = true;
