@@ -43,7 +43,7 @@ const Audio = {
     request.send();
   },
 
-  createAudioInfinite(title, isPlaying) {
+  createAudioInfinite(title = "main", isPlaying) {
     this.sounds[title] = this.context.createBufferSource();
     this.sounds[`${title}GainNode`] = this.context.createGain();
     this.sounds[title].buffer = this.bufferList[title];
@@ -57,7 +57,7 @@ const Audio = {
 
   },
 
-  setSoundVolume(title, volume) {
+  setSoundVolume(title = "main", volume = 1) {
     this.sounds[`${title}GainNode`].gain.setValueAtTime(volume, this.context.currentTime);
   },
 
