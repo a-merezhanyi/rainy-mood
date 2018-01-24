@@ -221,6 +221,10 @@ const Navigation = {
     this.detabinator.inert = true;
     this.sideNavEl.addEventListener("transitionend", this.onTransitionEnd);
   },
+
+  isSideNavVisible() {
+    return this.sideNavEl.classList.contains("side-nav--visible");
+  },
 };
 
 export default Navigation;
