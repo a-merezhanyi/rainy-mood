@@ -23,12 +23,12 @@ const Audio = {
         request.response,
         buffer => {
           if (!buffer) {
-            console.log(`error decoding file data: ${url}`);
+            console.error(`error decoding file data: ${url}`);
 
             return;
           }
           this.bufferList[title] = buffer;
-          callback.call(this);
+          callback && callback.call(this);
         },
         error => {
           console.error(`decodeAudioData error: ${error}`);
@@ -37,7 +37,7 @@ const Audio = {
     };
 
     request.onerror = () => {
-      console.log("BufferLoader: XHR error");
+      console.error("BufferLoader: XHR error");
     };
 
     request.send();
@@ -50,7 +50,6 @@ const Audio = {
     this.sounds[title].loop = true;
     this.sounds[`${title}GainNode`].gain.setValueAtTime(0.01, this.context.currentTime);
     this.sounds[title].connect(this.sounds[`${title}GainNode`]);
-    // this.sounds[`${title}GainNode`].connect(this.context.destination);
     this.sounds[`${title}GainNode`].connect(this.sounds.mainGainNode);
     this.sounds[title].start();
 
@@ -62,18 +61,16 @@ const Audio = {
     this.sounds[`${title}GainNode`].gain.setValueAtTime(x, this.context.currentTime);
   },
 
-  playSound(sound) {
+  playSound(title) {
     const source = this.context.createBufferSource();
-    source.buffer = this.bufferList[this.sounds[sound]];
-    source.connect(this.context.destination);
+    source.buffer = this.bufferList[title];
+    source.connect(this.sounds.mainGainNode);
     source.start();
   },
 
   muteSound(isMuted) {
     this.sounds.mainGainNode.gain.setValueAtTime(isMuted ? 0 : 1, this.context.currentTime);
-  }
-
-  // window.onload = init;
+  },
 
   // return {
   //   // swapMusic(from, to) {
@@ -83,14 +80,6 @@ const Audio = {
   //   //   music[`gainNode${capitalize(to)}`].gain.setValueAtTime(0.07, context.currentTime);
   //   //   music[to].start();
   //   // },
-
-  //   playSound(sound) {
-  //     const source = context.createBufferSource();
-  //     source.buffer = bufferList[sounds[sound]];
-  //     source.connect(context.destination);
-  //     source.start();
-  //   },
-  // };
 };
 
 export default Audio;

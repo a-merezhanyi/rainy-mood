@@ -10,6 +10,10 @@
   left:0;
 }
 
+$color1:rgba(0, 0, 0, 0.6);
+$color2:rgba(0, 0, 0, 0.3);
+$color3:rgba(0, 0, 0, 0.1);
+
 html {
   box-sizing:border-box;
 }
@@ -41,9 +45,15 @@ canvas {
     content:"";
     @include size(100%);
     @include abs-pos;
-    background-color:rgba(0, 0, 0, 0.1);
+    background-color:rgba(0, 0, 0, 0.7);
     z-index:1;
-    animation:thunder-bg 6s infinite;
+    // animation:thunder-bg 6s infinite;
+  }
+  &.fast:after {
+    animation:thunder-fast 0.6s;
+  }
+  &.long:after {
+    animation:thunder-long 1.4s;
   }
 }
 
@@ -51,49 +61,62 @@ canvas {
   @include abs-pos;
 }
 
-#canvas3 {
-  z-index:5;
-}
-
-#canvas2 {
-  z-index:10;
-}
-
-#canvas1 {
-  z-index:100;
-}
-
-$color1:rgba(34, 34, 34, 0.9);
-$color2:rgba(59, 59, 59, 0.3);
 .thunder {
   @at-root {
-    @keyframes thunder-bg {
+    @keyframes thunder-fast {
       0% {
         background-color:$color1;
       }
-      9% {
-        background-color:$color1;
-      }
-      10% {
+      5% {
         background-color:$color2;
       }
-      10.5% {
+      6% {
         background-color:$color1;
       }
-      80% {
-        background-color:$color1;
-      }
-      82% {
+      95% {
         background-color:$color2;
       }
-      83% {
+      98% {
         background-color:$color1;
       }
-      83.5% {
+      99% {
         background-color:$color2;
       }
       100% {
         background-color:$color1;
+      }
+    }
+
+    @keyframes thunder-long {
+      0% {
+        background-color:$color1;
+      }
+      5% {
+        background-color:$color2;
+      }
+      6% {
+        background-color:$color1;
+      }
+      7% {
+        background-color:$color2;
+      }
+      10% {
+        background-color:$color1;
+      }
+      80% {
+        background-color:$color2;
+      }
+      81% {
+        background-color:$color3;
+      }
+      82% {
+        background-color:$color2;
+      }
+      99% {
+        background-color:$color3;
+      }
+      100% {
+        background-color:$color2;
       }
     }
   }
