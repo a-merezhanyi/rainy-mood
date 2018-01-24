@@ -5,16 +5,18 @@ import rainHeavy from "./rain-heavy.mp3";
 
 import Audio from "../Audio";
 
-const finishedLoading = () => {
-  Audio.createAudioInfinite("rainSoft", true);
+const Rain = {
+  init() {
+    Audio.loadFile(rainSoft, "rainSoft", () => {
+      Audio.createAudioInfinite("rainSoft", true);
+    });
+    Audio.loadFile(rainHeavy, "rainHeavy", () => {
+      Audio.createAudioInfinite("rainHeavy", false);
+    });
+  },
 };
 
-const finishedLoading1 = () => {
-  Audio.createAudioInfinite("rainHeavy", false);
-};
-
-Audio.loadFile(rainSoft, "rainSoft", finishedLoading);
-Audio.loadFile(rainHeavy, "rainHeavy", finishedLoading1);
+export default Rain;
 
 // setTimeout(() => {
 //   Audio.setSoundVolume("rainHeavy", 1);

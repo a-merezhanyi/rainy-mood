@@ -25,3 +25,4 @@ import Sky from "./components/Sky";
 Sky.init();
 
 import Rain from "./components/Rain";
+Rain.init();
