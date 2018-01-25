@@ -33,10 +33,30 @@
     <meta name="msapplication-starturl" content="/rainy-mood/">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
   </head>
 
   <body class="sky">
-    <canvas id="canvas"></canvas>
+    <noscript>
+      You need JavaScript enabled to use this application. You can look through the source code <a href="https://github.com/e1r0nd/rainy-mood">https://github.com/e1r0nd/rainy-mood</a>
+    </noscript>
+
+    <canvas id="canvas">Canvas isn't supported by you browser.</canvas>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker.register("sw.js", {
+            scope: './'
+          }).then(
+            function(registration) {
+              // Registration was successful
+              console.log("ServiceWorker registration successful with scope: ", registration.scope); },
+            function(err) {
+              // registration failed :(
+              console.log("ServiceWorker registration failed: ", err);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
