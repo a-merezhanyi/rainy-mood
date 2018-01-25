@@ -18,7 +18,7 @@ module.exports = {
   entry: path.join(__dirname, "/app/main"),
   output: {
     path: path.join(__dirname, "/dist"),
-    publicPath: "/",
+    publicPath: "development" === NODE_ENV ? "/" : "./",
     filename: addHash("[name].js", "development" === NODE_ENV ? "hash" : "chunkhash"),
     library: "[name]",
   },
@@ -82,7 +82,6 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: "css-loader!postcss-loader!sass-loader",
-          publicPath: "/dist",
         }),
       },
       {
@@ -102,6 +101,7 @@ if ("production" === NODE_ENV) {
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
+        // eslint-disable-next-line
         pure_funcs: ["console.log", "window.console.log.apply"],
       },
       output: {
