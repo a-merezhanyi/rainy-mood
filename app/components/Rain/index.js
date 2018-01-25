@@ -10,12 +10,12 @@ class Drip {
     this.x = 0;
     this.y = 0;
     this.z = 0;
-    this.speed = 25;
   }
 
   init() {
     this.y = Math.random() * -100;
     this.z = Math.random() * 0.5 + 0.5;
+    this.speed = 10 + 19 * this.z;
   }
 
   recycle(stack) {
