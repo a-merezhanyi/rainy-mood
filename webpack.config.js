@@ -7,7 +7,6 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const rimraf = require("rimraf");
 
 function addHash(template, hash) {
@@ -86,7 +85,6 @@ module.exports = {
       },
       {
         test: /\.(ico|png|jpg|svg|ttf|eot|woff|woff2|mp3)$/,
-        // use: addHash("file?name=[path][name].[ext]", "hash:6"),
         use: addHash("file-loader?name=[name].[ext]", "hash:6"),
       },
     ],
