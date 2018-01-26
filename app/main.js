@@ -21,8 +21,8 @@ Navigation.init();
 import Audio from "./components/Audio";
 Audio.init();
 
-import Sky from "./components/Sky";
-Sky.init();
+import Storm from "./components/Storm";
+Storm.init();
 
 import Rain from "./components/Rain";
 Rain.init();

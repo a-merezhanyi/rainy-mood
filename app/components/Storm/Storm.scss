@@ -25,39 +25,11 @@ canvas {
   @include size(100%);
   @include background("storm", true);
   background-color:#222;
-  // background-image:url("storm-bg@x1.jpg");
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
   position:relative;
   z-index:0;
-
-  // @media /* Use x1 images for Desktop */
-  // only screen and (min-width: 468px) {
-  //   background-image:url("storm-bg-w@x1.jpg");
-  // }
-
-  // @media /* Use x2 images iPhone 6 & Retina HD displays */
-  // only screen and (-webkit-min-device-pixel-ratio: 2),
-  // only screen and (min-resolution: 192dpi) {
-  //   background-image:url("storm-bg@x2.jpg");
-  // }
-  // @media /* Use x3 images for iPhone 6 plus and similar devices */
-  // only screen and (-webkit-min-device-pixel-ratio: 3),
-  // only screen and (min-resolution: 350dpi) {
-  //   background-image:url("storm-bg@x3.jpg");
-  // }
-
-  // @media /* Use x2 images iPhone 6 & Retina HD displays */
-  // only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 468px),
-  // only screen and (min-resolution: 192dpi) and (min-width: 468px) {
-  //   background-image:url("storm-bg-w@x2.jpg");
-  // }
-  // @media /* Use x3 images for iPhone 6 plus and similar devices */
-  // only screen and (-webkit-min-device-pixel-ratio: 3) and (min-width: 468px),
-  // only screen and (min-resolution: 350dpi) and (min-width: 468px) {
-  //   background-image:url("storm-bg-w@x3.jpg");
-  // }
 
   &:after {
     content:"";

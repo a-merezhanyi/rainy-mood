@@ -1,4 +1,4 @@
-import "./Sky.scss";
+import "./Storm.scss";
 import Audio from "../Audio";
 
 import closeLong from "./thunder-close-long.mp3";
@@ -6,7 +6,7 @@ import distantQuite from "./thunder-distant-quite.mp3";
 import middleFast from "./thunder-middle-fast.mp3";
 import slowChill from "./thunder-slow-chill.mp3";
 
-const Sky = {
+const Storm = {
   init() {
     this.stack = [
       "closeLong",
@@ -39,4 +39,4 @@ const Sky = {
   },
 };
 
-export default Sky;
+export default Storm;
