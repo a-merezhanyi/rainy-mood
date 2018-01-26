@@ -138,8 +138,8 @@ const Rain = {
     });
 
     document.addEventListener("mousemove", this.mouseHandler.bind(this));
-    document.addEventListener("touchstart", this.touchHandler.bind(this), Navigation.applyPassive());
-    document.addEventListener("touchmove", this.touchHandler.bind(this), Navigation.applyPassive());
+    document.addEventListener("touchstart", this.touchHandler.bind(this), { passive: false });
+    document.addEventListener("touchmove", this.touchHandler.bind(this), { passive: false });
     window.addEventListener("resize", this.resize.bind(this));
 
     Ticker.addListener.call(this, this.step);

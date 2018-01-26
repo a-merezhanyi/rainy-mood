@@ -1,4 +1,5 @@
 canvas {
+  touch-action:none; /* prevent scrolling */
   width:100%;
   height:100%;
   display:block;
