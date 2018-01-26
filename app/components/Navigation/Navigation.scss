@@ -100,12 +100,16 @@ $curve-transition:cubic-bezier(0,0,0.3,1);
   position:absolute;
   top:16px;
   width:24px;
+  z-index:1;
+}
+
+.side-nav__mock-bg {
+  background-color:$header-hero-background;
 }
 
 .side-nav__header {
   align-items:flex-end;
   background-color:$header-hero-background;
-  background-image:url("menu-bg.jpg");
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
@@ -113,6 +117,25 @@ $curve-transition:cubic-bezier(0,0,0.3,1);
   display:flex;
   height:200px;
   padding:16px;
+  opacity:0;
+  transition:opacity 0.6s;
+  will-change:opacity;
+
+  &.side-nav__header--lazy-bg {
+    opacity:1;
+    background-image:url("menu-bg@x1.jpg");
+
+    @media /* Use x2 images iPhone 6 & Retina HD displays */
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi) {
+      background-image:url("menu-bg@x2.jpg");
+    }
+    @media /* Use x3 images for iPhone 6 plus and similar devices */
+    (-webkit-min-device-pixel-ratio: 3),
+    (min-resolution: 350dpi) {
+      background-image:url("menu-bg@x3.jpg");
+    }
+  }
 }
 
 .side-nav__title {

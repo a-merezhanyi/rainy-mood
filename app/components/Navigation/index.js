@@ -40,6 +40,11 @@ const Navigation = {
 
     this.supportsPassive = null;
     this.addEventListeners();
+
+    // Lazy load the background image
+    setTimeout(() => {
+      document.querySelector(".side-nav__header").classList.add("side-nav__header--lazy-bg");
+    }, 600);
   },
 
   createBlock() {
