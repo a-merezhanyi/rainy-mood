@@ -5,6 +5,7 @@
  */
 import "./styles/styles.scss";
 
+const Body = document.querySelector("body");
 /* Create Main container for all components */
 const Main = document.createElement("div");
 Main.className = "container--main";
@@ -13,16 +14,21 @@ Main.className = "container--main";
 import Navigation from "./components/Navigation";
 Main.appendChild(Navigation.createBlock());
 
-/* Create a document after all */
-document.querySelector("body").appendChild(Main);
-
-Navigation.init();
-
 import Audio from "./components/Audio";
 Audio.init();
 
 import Storm from "./components/Storm";
-Storm.init();
+Body.appendChild(Storm.createBlock());
+
+import City from "./components/City";
+Body.appendChild(City.createBlock());
 
 import Rain from "./components/Rain";
 Rain.init();
+
+/* Create a document after all */
+Body.appendChild(Main);
+
+Navigation.init();
+Storm.init();
+City.init();

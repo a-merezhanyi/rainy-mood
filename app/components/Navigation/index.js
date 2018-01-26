@@ -3,10 +3,15 @@ import "./Navigation.scss";
 
 import Detabinator from "./detabinator";
 import Audio from "../Audio";
+import Storm from "../Storm";
+import City from "../City";
 
 const Navigation = {
   init() {
-    this.selected = "summary";
+    this.storm = Storm;
+    this.city = City;
+
+    this.selected = "storm";
     document
       .querySelectorAll("[data-type=nav-select]")
       .forEach((node) => {
@@ -14,6 +19,7 @@ const Navigation = {
       });
 
     this.navTitle = document.querySelector("#sideNavTitle");
+    this.coverTitle = document.querySelector("#coverTitle");
     this.showButtonEl = document.querySelector("#menuShow");
     this.hideButtonEl = document.querySelector("#menuHide");
     this.sideNavEl = document.querySelector("#sideNav");
@@ -55,8 +61,27 @@ const Navigation = {
     return html;
   },
 
-  navSelect() {
+  navSelect(e) {
+    // Hide previous tab and stop playing
+    this[this.selected].stopPlaying();
+    document
+      .querySelector(`#${this.selected}Nav`)
+      .classList.remove("active");
+    document
+      .querySelector(`#${this.selected}`)
+      .classList.add("u--hidden");
+    // Store current Tab and show it
+    this.selected = e.currentTarget.dataset.target;
+    document
+      .querySelector(`#${this.selected}Nav`)
+      .classList.add("active");
+    document
+      .querySelector(`#${this.selected}`)
+      .classList.remove("u--hidden");
+    // Change Title and hide Nav
+    this.coverTitle.innerText = e.currentTarget.dataset.title;
     this.hideSideNav();
+    this[this.selected].startPlaying();
   },
 
   muteSounds() {

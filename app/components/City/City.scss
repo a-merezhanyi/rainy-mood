@@ -1,0 +1,23 @@
+@import "../../styles/mixin";
+
+.city {
+  @include abs-pos;
+  @include size(100%);
+  @include background("city", true);
+  background-color:#222;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:1;
+  transition:opacity 0.6s;
+  will-change:opacity;
+  z-index:0;
+
+  &:after {
+    content:"";
+    @include size(100%);
+    @include abs-pos;
+    background-color:rgba(0, 0, 0, 0.2);
+    z-index:1;
+  }
+}

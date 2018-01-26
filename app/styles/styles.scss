@@ -1,10 +1,26 @@
+@import "mixin";
 $body-background:#ecf0f1;
 $content-background:#fff;
 $text-color:#34495e;
 $link-color:#16a085;
 
+*,
+*:before,
+*:after {
+  box-sizing:inherit;
+  margin:0;
+  padding:0;
+}
+
 * {
   box-sizing:border-box;
+}
+
+
+html,
+body,
+canvas {
+  @include size(100%);
 }
 
 body {
@@ -23,20 +39,6 @@ a {
   transition:0.25s;
 }
 
-.container {
-  margin-left:auto;
-  margin-right:auto;
-  max-width:970px;
-  padding-left:15px;
-  padding-right:15px;
-  @media (max-width: 425px) {
-    max-width:420px;
-  }
-  @media (min-width: 426px) and (max-width: 768px) {
-    max-width:760px;
-  }
-}
-
 .container--main {
   background-color:#fff;
   padding-top:60px;
@@ -47,24 +49,8 @@ a {
   z-index:2;
 }
 
-.content {
-  text-align:justify;
-}
-
-.num-words {
-  font-weight:normal;
-}
-
-.form-group-right {
-  text-align:right;
-}
-
-.u--nodisplay {
-  display:none;
-}
-
-.u--center {
-  text-align:center;
+.container .u--hidden {
+  opacity:0;
 }
 
 .u--pointer {
@@ -75,9 +61,9 @@ a {
   // empty
 }
 @media (min-width: 426px) and (max-width: 768px) {
-  .add-btn {
-    width:50%;
-  }
+  // .add-btn {
+  //   width:50%;
+  // }
 }
 @media (min-width: 769px) and (max-width: 992px) {
   // empty

@@ -3,39 +3,24 @@ $color1:rgba(0, 0, 0, 0.6);
 $color2:rgba(0, 0, 0, 0.3);
 $color3:rgba(0, 0, 0, 0.1);
 
-html {
-  box-sizing:border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing:inherit;
-  margin:0;
-  padding:0;
-}
-
-html,
-body,
-canvas {
-  @include size(100%);
-}
-
-.sky {
+.storm {
+  @include abs-pos;
   @include size(100%);
   @include background("storm", true);
   background-color:#222;
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
-  position:relative;
+  opacity:1;
+  transition:opacity 0.6s;
+  will-change:opacity;
   z-index:0;
 
   &:after {
     content:"";
     @include size(100%);
     @include abs-pos;
-    background-color:rgba(0, 0, 0, 0.7);
+    background-color:rgba(0, 0, 0, 0.6);
     z-index:1;
   }
   &.fast:after {
@@ -44,10 +29,6 @@ canvas {
   &.long:after {
     animation:thunder-long 1.4s;
   }
-}
-
-canvas {
-  @include abs-pos;
 }
 
 .thunder {

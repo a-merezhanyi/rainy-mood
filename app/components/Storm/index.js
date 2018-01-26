@@ -14,12 +14,22 @@ const Storm = {
       "distantQuite",
       "slowChill",
     ];
-    this.sky = document.querySelector(".sky");
+    this.sky = document.querySelector(".storm");
     Audio.loadFile(closeLong, "closeLong");
     Audio.loadFile(distantQuite, "distantQuite");
     Audio.loadFile(middleFast, "middleFast");
     Audio.loadFile(slowChill, "slowChill");
+    this.isActive = true;
     this.playThunder(this.randInteger(0, 3), this.randInteger(3, 6));
+    document.querySelector("body");
+  },
+
+  createBlock() {
+    const html = document.createElement("div");
+    html.id = "storm";
+    html.classList.add("storm");
+
+    return html;
   },
 
   randInteger(min, max) {
@@ -27,15 +37,26 @@ const Storm = {
   },
 
   playThunder(sound, delay) {
-    setTimeout(() => {
+    this.isActive && setTimeout(() => {
       if (sound < 2) {
         this.sky.classList.add(sound ? "fast" : "long");
         setTimeout(() => this.sky.classList.remove("fast", "long"), 2000);
       }
 
-      Audio.playSound(this.stack[sound]);
-      this.playThunder(this.randInteger(0, 3), this.randInteger(10, 30));
+      this.isActive && (
+        Audio.playSound(this.stack[sound]),
+        this.playThunder(this.randInteger(0, 3), this.randInteger(15, 30))
+      );
     }, delay * 1000);
+  },
+
+  startPlaying() {
+    this.isActive = true;
+    this.playThunder(this.randInteger(0, 3), this.randInteger(2, 4));
+  },
+
+  stopPlaying() {
+    this.isActive = false;
   },
 };
 
