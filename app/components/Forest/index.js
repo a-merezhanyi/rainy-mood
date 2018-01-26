@@ -44,14 +44,14 @@ const Forest = {
     this.isActive && setTimeout(() => {
       this.isActive && (
         Audio.playSound(this.stack[sound]),
-        this.playBird(this.randInteger(0, 3), this.randInteger(15, 50))
+        this.playBird(this.randInteger(0, 4), this.randInteger(15, 50))
       );
     }, delay * 1000);
   },
 
   startPlaying() {
     this.isActive = true;
-    this.playBird(this.randInteger(0, 3), this.randInteger(2, 4));
+    this.playBird(this.randInteger(0, 4), this.randInteger(2, 4));
   },
 
   stopPlaying() {

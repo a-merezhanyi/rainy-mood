@@ -7,6 +7,18 @@ $title-color:#fff;
 $link-hover-background:#ecf0f1;
 $curve-transition:cubic-bezier(0,0,0.3,1);
 
+.btn {
+  background:none;
+  border:none;
+  color:$title-color;
+  height:24px;
+  margin:0;
+  padding:0;
+  position:absolute;
+  width:24px;
+  z-index:1;
+}
+
 .header {
   align-items:center;
   background:$header-background;
@@ -90,18 +102,24 @@ $curve-transition:cubic-bezier(0,0,0.3,1);
   transform:none;
 }
 
+.mute-btn {
+  @extend .btn;
+  bottom:18px;
+  font-size:0;
+  right:16px;
+
+  &.mute-btn--mute {
+    background:url(mute.svg);
+  }
+
+  &.mute-btn--unmute {
+    background:url(unmute.svg);
+  }
+}
 .side-nav__hide {
-  background:none;
-  border:none;
-  color:$title-color;
-  height:24px;
+  @extend .btn;
   left:16px;
-  margin:0;
-  padding:0;
-  position:absolute;
   top:16px;
-  width:24px;
-  z-index:1;
 }
 
 .side-nav__mock-bg {
@@ -118,6 +136,7 @@ $curve-transition:cubic-bezier(0,0,0.3,1);
   display:flex;
   height:200px;
   padding:16px;
+  position:relative;
   opacity:0;
   transition:opacity 0.6s;
   will-change:opacity;

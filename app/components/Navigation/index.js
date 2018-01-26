@@ -27,7 +27,7 @@ const Navigation = {
     this.sideNavEl = document.querySelector("#sideNav");
     this.sideNavContainerEl = document.querySelector("#sideNavContainer");
 
-    this.muteSound = document.querySelector("#muteSound");
+    this.muteBtn = document.querySelector("#muteBtn");
     // Control whether the container"s children can be focused
     // Set initial state to inert since the drawer is offscreen
     this.detabinator = new Detabinator(this.sideNavContainerEl);
@@ -52,6 +52,7 @@ const Navigation = {
     // Lazy load the background image
     setTimeout(() => {
       document.querySelector(".side-nav__header").classList.add("side-nav__header--lazy-bg");
+      this.muteBtn.classList.add("mute-btn--mute");
     }, 600);
   },
 
@@ -89,11 +90,13 @@ const Navigation = {
   muteSounds() {
     if ("false" === this.dataset.muted) {
       this.dataset.muted = "true";
-      this.innerText = "Unmute";
+      this.classList.remove("mute-btn--mute");
+      this.classList.add("mute-btn--unmute");
       Audio.muteSound(true);
     } else {
       this.dataset.muted = "false";
-      this.innerText = "Mute";
+      this.classList.add("mute-btn--mute");
+      this.classList.remove("mute-btn--unmute");
       Audio.muteSound();
     }
   },
@@ -117,7 +120,7 @@ const Navigation = {
   },
 
   addEventListeners() {
-    this.muteSound.addEventListener("click", this.muteSounds);
+    this.muteBtn.addEventListener("click", this.muteSounds);
 
     this.showButtonEl.addEventListener("click", this.showSideNav);
     this.hideButtonEl.addEventListener("click", this.hideSideNav);
