@@ -1,0 +1,49 @@
+@mixin size($size) {
+  width:$size;
+  height:$size;
+}
+
+@mixin abs-pos {
+  display:block;
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+@mixin background($image, $wide:false) {
+  $image-1:$image + "-bg@x1.jpg";
+  $image-1-w:$image + "-bg-w@x1.jpg";
+  $image-2:$image + "-bg@x2.jpg";
+  $image-2-w:$image + "-bg-w@x2.jpg";
+  $image-3:$image + "-bg@x3.jpg";
+  $image-3-w:$image + "-bg-w@x3.jpg";
+  background-image:url($image-1);
+
+  @if $wide {
+    @media /* Use x1 images for Desktop */
+    only screen and (min-width: 468px) {
+      background-image:url($image-1-w);
+    }
+    @media /* Use x2 images iPhone 6 & Retina HD displays */
+    only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 468px),
+    only screen and (min-resolution: 192dpi) and (min-width: 468px) {
+      background-image:url($image-2-w);
+    }
+    @media /* Use x3 images for iPhone 6 plus and similar devices */
+    only screen and (-webkit-min-device-pixel-ratio: 3) and (min-width: 468px),
+    only screen and (min-resolution: 350dpi) and (min-width: 468px) {
+      background-image:url($image-3-w);
+    }
+  } @else {
+    @media /* Use x2 images iPhone 6 & Retina HD displays */
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi) {
+      background-image:url($image-2);
+    }
+    @media /* Use x3 images for iPhone 6 plus and similar devices */
+    only screen and (-webkit-min-device-pixel-ratio: 3),
+    only screen and (min-resolution: 350dpi) {
+      background-image:url($image-3);
+    }
+  }
+}

@@ -1,3 +1,4 @@
+@import "../../styles/mixin";
 $header-background:#34495e;
 $header-shadow:rgba(0,0,0,0.3);
 $header-hero-background:#222;
@@ -123,18 +124,7 @@ $curve-transition:cubic-bezier(0,0,0.3,1);
 
   &.side-nav__header--lazy-bg {
     opacity:1;
-    background-image:url("menu-bg@x1.jpg");
-
-    @media /* Use x2 images iPhone 6 & Retina HD displays */
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi) {
-      background-image:url("menu-bg@x2.jpg");
-    }
-    @media /* Use x3 images for iPhone 6 plus and similar devices */
-    (-webkit-min-device-pixel-ratio: 3),
-    (min-resolution: 350dpi) {
-      background-image:url("menu-bg@x3.jpg");
-    }
+    @include background("menu");
   }
 }
 
