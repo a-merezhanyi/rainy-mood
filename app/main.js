@@ -23,6 +23,9 @@ Body.appendChild(Storm.createBlock());
 import City from "./components/City";
 Body.appendChild(City.createBlock());
 
+import Forest from "./components/Forest";
+Body.appendChild(Forest.createBlock());
+
 import Rain from "./components/Rain";
 Rain.init();
 
@@ -31,4 +34,9 @@ Body.appendChild(Main);
 
 Navigation.init();
 Storm.init();
-City.init();
+
+/* Load other enviroment lazy */
+setTimeout(() => {
+  City.init();
+  Forest.init();
+}, 3000);

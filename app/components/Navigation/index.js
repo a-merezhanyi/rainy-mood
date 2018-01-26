@@ -5,11 +5,13 @@ import Detabinator from "./detabinator";
 import Audio from "../Audio";
 import Storm from "../Storm";
 import City from "../City";
+import Forest from "../Forest";
 
 const Navigation = {
   init() {
     this.storm = Storm;
     this.city = City;
+    this.forest = Forest;
 
     this.selected = "storm";
     document

@@ -24,7 +24,11 @@ const City = {
   createBlock() {
     const html = document.createElement("div");
     html.id = "city";
-    html.classList.add("city", "u--hidden");
+    html.classList.add("u--hidden");
+    /* Load background lazy */
+    setTimeout(() => {
+      html.classList.add("city");
+    }, 1000);
 
     return html;
   },
