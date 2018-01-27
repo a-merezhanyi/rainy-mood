@@ -53,7 +53,7 @@ const Navigation = {
     setTimeout(() => {
       document.querySelector(".side-nav__header").classList.add("side-nav__header--lazy-bg");
       this.muteBtn.classList.add("mute-btn--mute");
-    }, 600);
+    }, 1000);
   },
 
   createBlock() {
