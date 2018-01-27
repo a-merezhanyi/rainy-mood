@@ -6,12 +6,14 @@ import Audio from "../Audio";
 import Storm from "../Storm";
 import City from "../City";
 import Forest from "../Forest";
+import Street from "../Street";
 
 const Navigation = {
   init() {
     this.storm = Storm;
     this.city = City;
     this.forest = Forest;
+    this.street = Street;
 
     this.selected = "storm";
     document

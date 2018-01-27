@@ -26,6 +26,9 @@ Body.appendChild(City.createBlock());
 import Forest from "./components/Forest";
 Body.appendChild(Forest.createBlock());
 
+import Street from "./components/Street";
+Body.appendChild(Street.createBlock());
+
 import Rain from "./components/Rain";
 Rain.init();
 
@@ -39,4 +42,5 @@ Storm.init();
 setTimeout(() => {
   City.init();
   Forest.init();
+  Street.init();
 }, 3000);
