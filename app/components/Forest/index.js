@@ -1,5 +1,6 @@
 import "./Forest.scss";
 import Audio from "../Audio";
+import Utils from "../../actions";
 
 import crow from "./crow.mp3";
 import whistling from "./whistling.mp3";
@@ -9,49 +10,28 @@ import nightingale2 from "./nightingale2.mp3";
 
 const Forest = {
   init() {
-    this.stack = [
-      "crow",
-      "whistling",
-      "bird",
-      "nightingale1",
-      "nightingale2",
-    ];
-    Audio.loadFile(crow, "crow");
-    Audio.loadFile(whistling, "whistling");
-    Audio.loadFile(bird, "bird");
-    Audio.loadFile(nightingale1, "nightingale1");
-    Audio.loadFile(nightingale2, "nightingale2");
-    this.isActive = false;
+    [this.stack, this.isActive] = Utils.initAudioComponent(
+      [
+        { file: crow, title: "crow" },
+        { file: whistling, title: "whistling" },
+        { file: bird, title: "bird" },
+        { file: nightingale1, title: "nightingale1" },
+        { file: nightingale2, title: "nightingale2" },
+      ]
+    );
   },
 
   createBlock() {
-    const html = document.createElement("div");
-    html.id = "forest";
-    html.classList.add("u--hidden");
-    /* Load background lazy */
-    setTimeout(() => {
-      html.classList.add("forest");
-    }, 2000);
-
-    return html;
-  },
-
-  randInteger(min, max) {
-    return Math.round(Math.random() * (max - min) + min);
+    return Utils.createComponentBlock("forest", true);
   },
 
   playBird(sound, delay) {
-    this.isActive && setTimeout(() => {
-      this.isActive && (
-        Audio.playSound(this.stack[sound]),
-        this.playBird(this.randInteger(0, 4), this.randInteger(15, 50))
-      );
-    }, delay * 1000);
+    Utils.playComponentSound(this, "playBird", sound, delay, 15, 50);
   },
 
   startPlaying() {
     this.isActive = true;
-    this.playBird(this.randInteger(0, 4), this.randInteger(2, 4));
+    this.playBird(Utils.randInteger(0, 4), Utils.randInteger(2, 4));
   },
 
   stopPlaying() {

@@ -1,5 +1,6 @@
 import "./City.scss";
 import Audio from "../Audio";
+import Utils from "../../actions";
 
 import car1 from "./car1.mp3";
 import car2 from "./car2.mp3";
@@ -8,47 +9,27 @@ import car4 from "./car4.mp3";
 
 const City = {
   init() {
-    this.stack = [
-      "car1",
-      "car2",
-      "car3",
-      "car4",
-    ];
-    Audio.loadFile(car1, "car1");
-    Audio.loadFile(car2, "car2");
-    Audio.loadFile(car3, "car3");
-    Audio.loadFile(car4, "car4");
-    this.isActive = false;
+    [this.stack, this.isActive] = Utils.initAudioComponent(
+      [
+        { file: car1, title: "car1" },
+        { file: car2, title: "car2" },
+        { file: car3, title: "car3" },
+        { file: car4, title: "car4" },
+      ]
+    );
   },
 
   createBlock() {
-    const html = document.createElement("div");
-    html.id = "city";
-    html.classList.add("u--hidden");
-    /* Load background lazy */
-    setTimeout(() => {
-      html.classList.add("city");
-    }, 1000);
-
-    return html;
-  },
-
-  randInteger(min, max) {
-    return Math.round(Math.random() * (max - min) + min);
+    return Utils.createComponentBlock("city", true);
   },
 
   playCar(sound, delay) {
-    this.isActive && setTimeout(() => {
-      this.isActive && (
-        Audio.playSound(this.stack[sound]),
-        this.playCar(this.randInteger(0, 3), this.randInteger(20, 40))
-      );
-    }, delay * 1000);
+    Utils.playComponentSound(this, "playCar", sound, delay, 20, 40);
   },
 
   startPlaying() {
     this.isActive = true;
-    this.playCar(this.randInteger(0, 3), this.randInteger(2, 4));
+    this.playCar(Utils.randInteger(0, 3), Utils.randInteger(2, 4));
   },
 
   stopPlaying() {
