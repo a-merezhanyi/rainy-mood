@@ -1,6 +1,5 @@
 import "./Storm.scss";
-import Audio from "../Audio";
-import Utils from "../../actions";
+import Utils from "../../actions/Utils";
 
 import closeLong from "./thunder-close-long.mp3";
 import distantQuite from "./thunder-distant-quite.mp3";

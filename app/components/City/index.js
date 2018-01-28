@@ -1,6 +1,5 @@
 import "./City.scss";
-import Audio from "../Audio";
-import Utils from "../../actions";
+import Utils from "../../actions/Utils";
 
 import car1 from "./car1.mp3";
 import car2 from "./car2.mp3";

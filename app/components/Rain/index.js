@@ -1,7 +1,7 @@
 import "./Rain.scss";
 import rainSoft from "./rain-soft.mp3";
 import rainHeavy from "./rain-heavy.mp3";
-import Audio from "../Audio";
+import Audio from "../../actions/Audio";
 import Navigation from "../Navigation";
 import Ticker from "./ticker";
 

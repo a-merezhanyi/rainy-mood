@@ -1,6 +1,5 @@
 import "./Street.scss";
-import Audio from "../Audio";
-import Utils from "../../actions";
+import Utils from "../../actions/Utils";
 
 import steps from "./steps.mp3";
 import scooter from "./scooter.mp3";

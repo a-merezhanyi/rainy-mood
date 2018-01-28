@@ -1,4 +1,4 @@
-import Audio from "../components/Audio";
+import Audio from "./Audio";
 
 const Utils = {
   initAudioComponent(stack, isActive = false) {
@@ -22,6 +22,10 @@ const Utils = {
     return html;
   },
 
+  randInteger(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+  },
+
   playComponentSound(component, playFunction, sound, delay, min, max, isStorm) {
     component.isActive && setTimeout(() => {
       (isStorm && sound < 2) && (
@@ -37,10 +41,6 @@ const Utils = {
         )
       );
     }, delay * 1000);
-  },
-
-  randInteger(min, max) {
-    return Math.round(Math.random() * (max - min) + min);
   },
 };
 

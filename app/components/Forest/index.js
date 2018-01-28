@@ -1,6 +1,5 @@
 import "./Forest.scss";
-import Audio from "../Audio";
-import Utils from "../../actions";
+import Utils from "../../actions/Utils";
 
 import crow from "./crow.mp3";
 import whistling from "./whistling.mp3";

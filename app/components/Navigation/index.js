@@ -2,7 +2,7 @@ import navigationTmp from "./Navigation.html";
 import "./Navigation.scss";
 
 import Detabinator from "./detabinator";
-import Audio from "../Audio";
+import Audio from "../../actions/Audio";
 import Storm from "../Storm";
 import City from "../City";
 import Forest from "../Forest";

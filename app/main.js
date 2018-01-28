@@ -14,7 +14,7 @@ Main.className = "container--main";
 import Navigation from "./components/Navigation";
 Main.appendChild(Navigation.createBlock());
 
-import Audio from "./components/Audio";
+import Audio from "./actions/Audio";
 Audio.init();
 
 import Storm from "./components/Storm";

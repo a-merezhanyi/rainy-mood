@@ -75,15 +75,6 @@ const Audio = {
   muteSound(isMuted) {
     this.sounds.mainGainNode.gain.setValueAtTime(isMuted ? 0 : 1, this.context.currentTime);
   },
-
-  // return {
-  //   // swapMusic(from, to) {
-  //   //   music[`gainNode${capitalize(from)}`].gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 3.0);
-  //   //   music[from].stop(context.currentTime + 3.0);
-  //   //   createAudio();
-  //   //   music[`gainNode${capitalize(to)}`].gain.setValueAtTime(0.07, context.currentTime);
-  //   //   music[to].start();
-  //   // },
 };
 
 export default Audio;
