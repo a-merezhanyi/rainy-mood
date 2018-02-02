@@ -78,9 +78,10 @@ const Navigation = {
     .classList.add("u--hidden");
     // Store current Tab and show it
     this.selected = e.currentTarget.dataset.target;
-    // First time? Load background lazy
+    // First time? Load background & sounds lazy
     if (document.querySelector(`#${this.selected}-preload`)) {
       Utils.loadBackground(this.selected);
+      this[this.selected].init();
     }
     document
       .querySelector(`#${this.selected}Nav`)

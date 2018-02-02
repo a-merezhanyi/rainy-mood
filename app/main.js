@@ -39,10 +39,3 @@ Body.appendChild(Main);
 Navigation.init();
 Storm.init();
 window.addEventListener("load", () => Utils.loadBackground("storm"));
-
-/* Load other enviroment lazy */
-setTimeout(() => {
-  City.init();
-  Forest.init();
-  Street.init();
-}, 3000);
