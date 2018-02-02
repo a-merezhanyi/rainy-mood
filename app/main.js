@@ -1,9 +1,10 @@
 /**
  * @file Rainy Mood
  * @copyright Anatol Marezhanyi 2018
- * @version 0.0.1
+ * @version 1.0.0
  */
 import "./styles/styles.scss";
+import Utils from "./actions/Utils";
 
 const Body = document.querySelector("body");
 /* Create Main container for all components */
@@ -37,6 +38,7 @@ Body.appendChild(Main);
 
 Navigation.init();
 Storm.init();
+window.addEventListener("load", () => Utils.loadBackground("storm"));
 
 /* Load other enviroment lazy */
 setTimeout(() => {

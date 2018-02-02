@@ -59,14 +59,8 @@ a {
   cursor:pointer;
 }
 
-@media (max-width: 425px) {
-  // empty
-}
-@media (min-width: 426px) and (max-width: 768px) {
-  // .add-btn {
-  //   width:50%;
-  // }
-}
-@media (min-width: 769px) and (max-width: 992px) {
-  // empty
+.img-small {
+  filter:blur(10px);
+  /* this is needed so Safari keeps sharp edges */
+  transform:scale(1);
 }

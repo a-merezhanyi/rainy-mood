@@ -1,17 +1,14 @@
 @import "../../styles/mixin";
 
 .forest {
-  @include abs-pos;
-  @include size(100%);
-  @include background("forest", true);
-  background-color:#222;
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  opacity:1;
-  transition:opacity 0.6s;
-  will-change:opacity;
-  z-index:0;
+  @include cover;
+
+  &.forest-preload {
+    @include background-preload("forest");
+  }
+  &.forest-img {
+    @include background("forest", true);
+  }
 
   &:after {
     content:"";

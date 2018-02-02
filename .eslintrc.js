@@ -209,8 +209,8 @@ module.exports = {
     "max-len": [1, 121, 2],
     "max-params": 0,
     "max-statements": 0,
-    "no-bitwise": 1,
-    "no-plusplus": 1,
+    // "no-bitwise": 1,
+    // "no-plusplus": 1,
 
     /* Babel */
     // "babel/block-scoped-var": 1,

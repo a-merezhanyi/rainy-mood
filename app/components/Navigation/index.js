@@ -3,6 +3,7 @@ import "./Navigation.scss";
 
 import Detabinator from "./detabinator";
 import Audio from "../../actions/Audio";
+import Utils from "../../actions/Utils";
 import Storm from "../Storm";
 import City from "../City";
 import Forest from "../Forest";
@@ -70,13 +71,17 @@ const Navigation = {
     // Hide previous tab and stop playing
     this[this.selected].stopPlaying();
     document
-      .querySelector(`#${this.selected}Nav`)
-      .classList.remove("active");
+    .querySelector(`#${this.selected}Nav`)
+    .classList.remove("active");
     document
-      .querySelector(`#${this.selected}`)
-      .classList.add("u--hidden");
+    .querySelector(`#${this.selected}`)
+    .classList.add("u--hidden");
     // Store current Tab and show it
     this.selected = e.currentTarget.dataset.target;
+    // First time? Load background lazy
+    if (document.querySelector(`#${this.selected}-preload`)) {
+      Utils.loadBackground(this.selected);
+    }
     document
       .querySelector(`#${this.selected}Nav`)
       .classList.add("active");

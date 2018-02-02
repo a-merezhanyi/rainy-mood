@@ -1,17 +1,14 @@
 @import "../../styles/mixin";
 
 .street {
-  @include abs-pos;
-  @include size(100%);
-  @include background("street", true);
-  background-color:#222;
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  opacity:1;
-  transition:opacity 0.6s;
-  will-change:opacity;
-  z-index:0;
+  @include cover;
+
+  &.street-preload {
+    @include background-preload("street");
+  }
+  &.street-img {
+    @include background("street", true);
+  }
 
   &:after {
     content:"";

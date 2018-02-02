@@ -84,9 +84,13 @@ module.exports = {
         }),
       },
       {
-        test: /\.(ico|png|jpg|svg|ttf|eot|woff|woff2|mp3)$/,
+        test: /\.(ico|png|svg|ttf|eot|woff|woff2|mp3)$/,
         use: addHash("file-loader?name=[name].[ext]", "hash:6"),
       },
+      {
+        test: /\.jpg$/,
+        use: "file-loader?name=[name].[ext]",
+      }
     ],
 
     noParse: /node_modules\/(bootstrap|jquery)/,

@@ -4,23 +4,20 @@ $color2:rgba(0, 0, 0, 0.3);
 $color3:rgba(0, 0, 0, 0.1);
 
 .storm {
-  @include abs-pos;
-  @include size(100%);
-  @include background("storm", true);
-  background-color:#222;
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  opacity:1;
-  transition:opacity 0.6s;
-  will-change:opacity;
-  z-index:0;
+  @include cover;
+
+  &.storm-preload {
+    @include background-preload("storm");
+  }
+  &.storm-img {
+    @include background("storm", true);
+  }
 
   &:after {
     content:"";
     @include size(100%);
     @include abs-pos;
-    background-color:rgba(0, 0, 0, 0.6);
+    background-color:rgba(0, 0, 0, 0.3);
     z-index:1;
   }
   &.fast:after {
