@@ -4,7 +4,7 @@
   "lang": "en-US",
   "start_url": "./",
   "scope": "./",
-  "display": "minimal-ui",
+  "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#34495e",
   "background_color": "#222",
