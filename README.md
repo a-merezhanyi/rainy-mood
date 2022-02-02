@@ -1,7 +1,7 @@
 # Rainy Mood
 
 ## TL;DR
-In case of a green day start this immediately https://e1r0nd.github.io/rainy-mood/
+In case of a green day start this immediately https://a-merezhanyi.github.io/rainy-mood/
 
 ## Annotation
 Was created during rainy *January 2018* in order to practice:
@@ -19,7 +19,7 @@ This is PWA, so you can *Add it to Homescreen* on your mobile device (Android or
 
 In case you'll find an issue (or two) or have comments/optimization proposals feel free to contribute.
 
-You can play on GitPage https://e1r0nd.github.io/rainy-mood/<br>
+You can play on GitPage https://a-merezhanyi.github.io/rainy-mood/<br>
 
 ## Run locally
 ```
@@ -28,8 +28,8 @@ npm start
 ```
 
 ## Author
-coded by Anatol Merezhanyi @e1r0nd_crg<br>
-https://www.youtube.com/c/AnatolMerezhanyi<br>
+coded by Tolik Merezhanyi<br>
+https://www.youtube.com/c/StyledJavaScript<br>
 
 ## License
 [MIT License](LICENSE.md)<br>
