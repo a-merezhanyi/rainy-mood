@@ -28,7 +28,7 @@ npm start
 ```
 
 ## Author
-coded by Tolik Merezhanyi<br>
+coded by A. Merezhanyi<br>
 https://www.youtube.com/c/StyledJavaScript<br>
 
 ## License
