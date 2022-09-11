@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2018 Tolik Merezhanyi https://github.com/a-merezhanyi/rainy-mood
+Copyright (c) 2018 A. Merezhanyi https://github.com/a-merezhanyi/rainy-mood
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
